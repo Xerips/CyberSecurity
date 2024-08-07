@@ -1,0 +1,9 @@
+[submodule "Defence"]
+	path = Defence
+	url = git@github.com:Xerips/Defence.git
+[submodule "Forensics"]
+	path = Forensics
+	url = git@github.com:Xerips/Forensics.git
+[submodule "Offence"]
+	path = Offence
+	url = git@github.com:Xerips/Offence.git
