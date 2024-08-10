@@ -2,10 +2,10 @@
 
 ### Table of Contents
 
-- [Why Wazuh?](https://github.com/Xerips/Defence/tree/main/Wazuh-SIEM#why-wazuh)
-- [Documentation Review](https://github.com/Xerips/Defence/tree/main/Wazuh-SIEM#documentation-review-getting-started)
-- [Set'er up!](https://github.com/Xerips/Defence/tree/main/Wazuh-SIEM#seter-up)
-- [Kicking The Tires](https://github.com/Xerips/Defence/tree/main/Wazuh-SIEM#kicking-the-tires)
+- [Why Wazuh?](https://github.com/Xerips/CyberSecurity/tree/main/Defence/Wazuh-SIEM#why-wazuh)
+- [Documentation Review](https://github.com/Xerips/CyberSecurity/tree/main/Defence/Wazuh-SIEM#documentation-review-getting-started)
+- [Set'er up!](https://github.com/Xerips/CyberSecurity/tree/main/Defence/Wazuh-SIEM#seter-up)
+- [Kicking The Tires](https://github.com/Xerips/CyberSecurity/tree/main/Defence/Wazuh-SIEM#kicking-the-tires)
 
 ### Why Wazuh?
 
@@ -63,7 +63,7 @@ When we start looking through the documentation we see that there are 4 componen
 - Filebeat is used to securely forward Wazuh alerts and archived events to the Wazuh indexer using TLS encryption.
 
 Here's a diagram:  
-![Wazuh Architecture](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/deployment-architecture1.png)
+![Wazuh Architecture](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/deployment-architecture1.png)
 
 **Wazuh Agent-Server Communication:**
 
@@ -288,18 +288,18 @@ Just go to the wazuh drop down, select agents, then deploy new agent. It will gi
 
 It's time to see how good/bad our basic Arch Linux install is!  
 Here's a look at our new dashboard:  
-![Wazuh Dashboard](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/wazuh-dashboard.png)
+![Wazuh Dashboard](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/wazuh-dashboard.png)
 
 - Let's move to our agents dashboard to see our active agent.
 - You can do this by clicking on the "1" under "Total agents" or "Active agents," otherwise, you can click the downward arrow beside "wazuh." at the top of the dashboard and select "Agents."
 
 This will bring up the following dashboard:  
-![Agents Dashboard](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/agents-dashboard.png)
+![Agents Dashboard](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/agents-dashboard.png)
 
 - In this dashboard we will be able to see all of our agents, and can click on them to drill deeper into what's going on and what the wazuh scans have returned.
 
 Click on the arch agent as the red arrow in the picture indicates to visit the specific agent's dashboard:  
-![Arch Agent Dashboard](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/arch-agent-dashboard.png)
+![Arch Agent Dashboard](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/arch-agent-dashboard.png)
 
 I've highlighted some of the boxes to point out some cool features.
 
@@ -309,7 +309,7 @@ I've highlighted some of the boxes to point out some cool features.
 - The **Cyan box** Is the Security Configuration Assessment. Let's click on the "System audit for Unix based systems" and see why we only got a score of 14%.
 
 The arch agent's SCA dashboard:
-![SCA-Arch Scan](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/SCA-arch.png)
+![SCA-Arch Scan](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/SCA-arch.png)
 
 - In the above image, I've clicked on the first failed scan which is titled "SSH Hardening: Port should not be 22."
   - Wazuh provides a "Rationale" to communicate why the suggestion to change the port number was given.
@@ -334,11 +334,12 @@ The arch agent's SCA dashboard:
   - Search who is responsible for opening a specific port with `ss -lp | grep <specific port>`
   - Finding out if a specific port is in use is valuable, we don't want to accidentally assign a port to ssh that is already in use.
 - Now we have the tools we need and the info on what to change, let's make some quick changes, restart the wazuh agent to re-scan our system, and see what happens to our System Audit score...
-  ![SCA Fixed](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/SCA-Fixed.png)
+  ![SCA Fixed](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/SCA-Fixed.png)
 - There we have it! Because of the easy to follow breakdown: with 2 config files, 1 terminal command, and a few minutes of changes we increased our System audit score from 14% to 92%. It should be 100%. I fixed the LoginGraceTime 120 failure but for some reason wazuh isn't picking up on it. This is something to look into, not something to ignore. There is a reason why that check failed, and it's best to understand why.
 - Now, this was pretty easy to fix up; it's a fresh machine, we don't have a lot of integration with other services or a bunch of people who were using SSH that we needed to enroll in the new changes. In reality things can take much more time and planning. That being said, having a tool like this that can help you quickly identify low hanging fruit and a gives you a direct path to take action can certainly help with that planning and definitely save time on the researching and finding of documentation fast.
 - If we go back to our arch agent menu, we can see we've generated some MITRE ATT&CK events when we restarted our agent.
 
-![Arch Agent Dashboard 2](https://github.com/Xerips/Defence/blob/main/Wazuh-SIEM/arch-agent-dashboard2.png)
+![Arch Agent Dashboard 2](https://github.com/Xerips/CyberSecurity/blob/main/Defence/Wazuh-SIEM/arch-agent-dashboard2.png)
 
-There is so much more you can do with wazuh and a SIEM in general. It's hard to believe that you can just download something like this - it's so easy to use, it's open source, and it's completely free to do what we've done here! I'll be doing more with wazuh as I get into more fun stuff with our "Dirty Twin," and I'll definitely be setting up an agent on a windows machine to play around with that as well! **Stay tuned nerds, the fun is just beginning!**
+There is so much more you can do with wazuh and a SIEM in general. It's hard to believe that you can just download something like this - it's so easy to use, it's open source, and it's completely free to do what we've done here!  
+I hope you've found this helpful!
