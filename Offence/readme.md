@@ -4,4 +4,4 @@ Welcome to Offence!
 
 ## Table of Contents
 
-- [OSINT](https://github.com/Xerips/Offence/blob/main/OSINT/readme.md)
+- [OSINT](https://github.com/Xerips/CyberSecurity/tree/main/Offence/OSINT)
