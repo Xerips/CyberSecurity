@@ -1,6 +1,6 @@
 # Remember-app
 
-![showcase]()
+![showcase](https://github.com/Xerips/CyberSecurity/blob/main/remember-app/showcase.png)
 
 **Description**: A simple app to write down and recall useful commands from the command line.
 
