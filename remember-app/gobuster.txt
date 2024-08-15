@@ -1,0 +1,6 @@
+## Directory brute forcing with seclists small list.
+gobuster dir -u https://example.com -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt -t 4 --delay 1s -o gobuster-small.scan
+
+## Big. Loud. Gobuster scan with seclists big dir search.
+gobuster dir -u https://example.com -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -t 4 -o gobuster-big.scan
+

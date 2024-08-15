@@ -1,0 +1,6 @@
+## Favorite. Nmap. (basic scripts, version enumeration, stealth scan.
+sudo nmap -sC -sV -p- -sS <IP> -oN nmap.scan
+
+## Most basic scan.
+sudo nmap <IP>
+
