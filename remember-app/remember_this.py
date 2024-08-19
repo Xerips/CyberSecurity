@@ -1,56 +1,60 @@
 import os
 import argparse
 
-def add_to_remember_file(header, description, command, verbose=False):
-    header_file = f"{header.lower()}.txt"
-    header_exists = os.path.isfile(header_file)
-    
-    # Check for duplicate commands
-    if header_exists:
-        with open(header_file, 'r') as f:
-            content = f.read()
-        if command in content:
-            print(f"Command '{command}' already exists under #{header}.")
-            return
-    
-    # Append to header file
-    with open(header_file, 'a') as f:
-        f.write(f"## {description}\n{command}\n\n")
-    
-    if not header_exists:
-        with open('index_header.txt', 'a') as index_file:
-            index_file.write(f"{header}\n")
-        print(f"New Header created for #{header}. Description and Command appended to #{header}.")
-    else:
-        print(f"Description and Command appended to #{header}.")
-    
-    # Verbose mode: Display the updated content of the header file
-    if verbose:
-        with open(header_file, 'r') as f:
-            print("\nUpdated content under the header:")
-            print(f"#{header}\n{f.read()}")
+# Determine the directory where the script is located
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Remember commands and descriptions.")
+def add_to_remember_file(header, description, command, verbose=False):
+    header_file_path = os.path.join(script_dir, f"{header.lower()}.txt")
+    index_file_path = os.path.join(script_dir, 'index_header.txt')
+
+    # Check if the header already exists
+    if os.path.exists(header_file_path):
+        # If the header file exists, check for duplicate commands
+        with open(header_file_path, 'r') as hf:
+            existing_content = hf.read()
+            if command in existing_content:
+                print(f"Command already exists under header '{header}'.")
+                return
+        # Append the new description and command
+        with open(header_file_path, 'a') as hf:
+            hf.write(f"{description}\n{command}\n")
+        print(f"Description and Command appended to # {header}.")
+    else:
+        # If the header file does not exist, create it
+        with open(header_file_path, 'w') as hf:
+            hf.write(f"## {description}\n{command}\n")
+        with open(index_file_path, 'a') as index_file:
+            index_file.write(f"{header}\n")
+        print(f"New Header created for {header}. Description and Command appended to # {header}.")
+
+    if verbose:
+        print("\nUpdated content under the header:")
+        print(f"# {header}\n## {description}\n{command}\n")
+
+def interactive_mode():
+    header = input("Enter the header: ")
+    description = input("Enter the description: ")
+    command = input("Enter the command: ")
+    add_to_remember_file(header, description, command, verbose=True)
+
+def main():
+    parser = argparse.ArgumentParser(description="Remember and retrieve commands and descriptions.")
     parser.add_argument('-H', '--header', help='Header for the new entry')
     parser.add_argument('-D', '--description', help='Description for the new entry')
     parser.add_argument('-C', '--command', help='Command for the new entry')
-    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose mode')
-    parser.add_argument('-i', '--interactive', action='store_true', help='Enable interactive mode')
+    parser.add_argument('-i', '--interactive', action='store_true', help='Interactive mode to add entries')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Print detailed information')
 
     args = parser.parse_args()
 
     if args.interactive:
-        header = input("Enter the header: ")
-        description = input("Enter the description: ")
-        command = input("Enter the command: ")
+        interactive_mode()
+    elif args.header and args.description and args.command:
+        add_to_remember_file(args.header, args.description, args.command, verbose=args.verbose)
     else:
-        header = args.header
-        description = args.description
-        command = args.command
+        parser.print_help()
 
-    if not all([header, description, command]):
-        print("Error: Header, Description, and Command must all be provided.")
-    else:
-        add_to_remember_file(header, description, command, verbose=args.verbose)
+if __name__ == "__main__":
+    main()
 

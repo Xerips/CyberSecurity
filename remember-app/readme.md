@@ -11,6 +11,10 @@ Even autosuggest for the command line doesn't always find what you're actually l
 
 So! I've created this little app to help me quickly add useful commands to a file from the command line, then search those commands when I'm trying to remember them.
 
+**ChangeNotes:**
+
+2024-08-19: Fixed functionality to read and write all files from/to the same directory that remember-app is located.
+
 ## remember_this.py
 
 - Use this to write commands or notes into a file that will be located in the directory of the script.

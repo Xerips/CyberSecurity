@@ -1,9 +1,13 @@
 import os
 import argparse
 
+# Determine the directory where the script is located
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
 def list_headers():
-    if os.path.exists('index_header.txt'):
-        with open('index_header.txt', 'r') as f:
+    index_file_path = os.path.join(script_dir, 'index_header.txt')
+    if os.path.exists(index_file_path):
+        with open(index_file_path, 'r') as f:
             headers = f.readlines()
             print("Available headers:")
             for header in headers:
@@ -12,16 +16,15 @@ def list_headers():
         print("No headers found.")
 
 def print_all():
-    if os.path.exists('index_header.txt'):
-        with open('index_header.txt', 'r') as f:
+    index_file_path = os.path.join(script_dir, 'index_header.txt')
+    if os.path.exists(index_file_path):
+        with open(index_file_path, 'r') as f:
             headers = f.readlines()
-        for idx, header in enumerate(headers):
+        for header in headers:
             header = header.strip()
-            header_file = f"{header.lower()}.txt"
+            header_file = os.path.join(script_dir, f"{header.lower()}.txt")
             if os.path.exists(header_file):
-                if idx > 0:
-                    print("\n")  # Add a new line before each header section
-                print(f"# {header}")
+                print(f"\n# {header}")
                 with open(header_file, 'r') as hf:
                     print(hf.read().strip())
     else:
@@ -29,27 +32,23 @@ def print_all():
 
 def search_keyword(keyword):
     keyword = keyword.lower()
-    if os.path.exists('index_header.txt'):
-        with open('index_header.txt', 'r') as f:
+    index_file_path = os.path.join(script_dir, 'index_header.txt')
+    if os.path.exists(index_file_path):
+        with open(index_file_path, 'r') as f:
             headers = f.readlines()
         found = False
-        for idx, header in enumerate(headers):
+        for header in headers:
             header = header.strip()
-            header_file = f"{header.lower()}.txt"
+            header_file = os.path.join(script_dir, f"{header.lower()}.txt")
             if os.path.exists(header_file):
                 with open(header_file, 'r') as hf:
                     content = hf.read()
                     if keyword in content.lower():
-                        if idx > 0 and found:
-                            print("\n")  # Add a new line before each header section when searching
-                        print(f"# {header}")
+                        print(f"\n# {header}")
                         lines = content.splitlines()
-                        for i in range(len(lines)):
-                            if keyword in lines[i].lower():
-                                print(lines[i])
-                                # Print the command if it's on the next line
-                                if i + 1 < len(lines) and not lines[i + 1].startswith("##"):
-                                    print(lines[i + 1])
+                        for line in lines:
+                            if keyword in line.lower():
+                                print(line)
                         found = True
         if not found:
             print(f"No matches found for keyword '{keyword}'.")
@@ -72,10 +71,10 @@ if __name__ == "__main__":
     elif args.search:
         search_keyword(args.search)
     elif args.header:
-        header_file = f"{args.header.lower()}.txt"
+        header_file = os.path.join(script_dir, f"{args.header.lower()}.txt")
         if os.path.exists(header_file):
-            print(f"# {args.header}")
             with open(header_file, 'r') as f:
+                print(f"# {args.header}")
                 print(f.read().strip())
         else:
             print(f"Header '{args.header}' not found.")
