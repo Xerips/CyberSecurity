@@ -18,7 +18,7 @@ def add_to_remember_file(header, description, command, verbose=False):
                 return
         # Append the new description and command
         with open(header_file_path, 'a') as hf:
-            hf.write(f"{description}\n{command}\n")
+            hf.write(f"## {description}\n{command}\n")
         print(f"Description and Command appended to # {header}.")
     else:
         # If the header file does not exist, create it
