@@ -1,0 +1,209 @@
+{
+    "tasks": [
+        {
+            "category": "1. Passive Reconnaissance",
+            "items": [
+                {
+                    "description": "Conduct attack surface discovery",
+                    "done": false,
+                    "page": "124-132"
+                },
+                {
+                    "description": "Check for exposed secrets",
+                    "done": false,
+                    "page": "133-136"
+                }
+            ]
+        },
+        {
+            "category": "2. Active Reconnaissance",
+            "items": [
+                {
+                    "description": "Scan for open ports and services",
+                    "done": false,
+                    "page": "138"
+                },
+                {
+                    "description": "Use the application as intended",
+                    "done": false,
+                    "page": "137"
+                },
+                {
+                    "description": "Inspect web application with DevTools",
+                    "done": false,
+                    "page": "139-142"
+                },
+                {
+                    "description": "Search for API-related directories",
+                    "done": false,
+                    "page": "143-146"
+                },
+                {
+                    "description": "Discover API endpoints",
+                    "done": false,
+                    "page": "146-148"
+                }
+            ]
+        },
+        {
+            "category": "3. Endpoint Analysis",
+            "items": [
+                {
+                    "description": "Find and review API documentation",
+                    "done": false,
+                    "page": "156-159"
+                },
+                {
+                    "description": "Reverse engineer the API",
+                    "done": false,
+                    "page": "161-164"
+                },
+                {
+                    "description": "Use the API as intended",
+                    "done": false,
+                    "page": "167-168"
+                },
+                {
+                    "description": "Analyze responses for information disclosures, excessive data exposures, and business logic flaws",
+                    "done": false,
+                    "page": "169-174"
+                }
+            ]
+        },
+        {
+            "category": "4. Authentication Testing",
+            "items": [
+                {
+                    "description": "Conduct basic authentication testing",
+                    "done": false,
+                    "page": "180-186"
+                },
+                {
+                    "description": "Attack and manipulate API tokens",
+                    "done": false,
+                    "page": "187-197"
+                }
+            ]
+        },
+        {
+            "category": "5. Conduct Fuzzing",
+            "items": [
+                {
+                    "description": "Fuzz all the things",
+                    "done": false,
+                    "page": "202-218"
+                }
+            ]
+        },
+        {
+            "category": "6. Authorization Testing",
+            "items": [
+                {
+                    "description": "Discover resource identification methods",
+                    "done": false,
+                    "page": "244-255"
+                },
+                {
+                    "description": "Test for BOLA (Broken Object Level Authorization)",
+                    "done": false,
+                    "page": "225-227"
+                },
+                {
+                    "description": "Test for BFLA (Broken Function Level Authorization)",
+                    "done": false,
+                    "page": "227-230"
+                }
+            ]
+        },
+        {
+            "category": "7. Mass Assignment Testing",
+            "items": [
+                {
+                    "description": "Discover standard parameters used in requests",
+                    "done": false,
+                    "page": "238-240"
+                },
+                {
+                    "description": "Test for mass assignment",
+                    "done": false,
+                    "page": "240-243"
+                }
+            ]
+        },
+        {
+            "category": "7. Injection Testing",
+            "items": [
+                {
+                    "description": "Discover requests that accept user input",
+                    "done": false,
+                    "page": "250"
+                },
+                {
+                    "description": "Test for XSS/XAS",
+                    "done": false,
+                    "page": "251-253"
+                },
+                {
+                    "description": "Perform database-specific attacks",
+                    "done": false,
+                    "page": "253-259"
+                },
+                {
+                    "description": "Perform Operating System injection",
+                    "done": false,
+                    "page": "259-260"
+                }
+            ]
+        },
+        {
+            "category": "9. Rate Limit Testing",
+            "items": [
+                {
+                    "description": "Test for the existence of rate limits",
+                    "done": false,
+                    "page": "276"
+                },
+                {
+                    "description": "Test for methods to avoid rate limits",
+                    "done": false,
+                    "page": "276-278"
+                },
+                {
+                    "description": "Test for methods to bypass rate limits",
+                    "done": false,
+                    "page": "278-284"
+                }
+            ]
+        },
+        {
+            "category": "10 Evasive Techniques",
+            "items": [
+                {
+                    "description": "Add string terminators to attacks",
+                    "done": false,
+                    "page": "270-271"
+                },
+                {
+                    "description": "Add case switching to attacks",
+                    "done": false,
+                    "page": "217-272"
+                },
+                {
+                    "description": "Encode payloads",
+                    "done": false,
+                    "page": "272"
+                },
+                {
+                    "description": "Combine different evasion techniques",
+                    "done": false,
+                    "page": "273-275"
+                },
+                {
+                    "description": "Rinse and repeat or apply evasion techniques to all previous attacks",
+                    "done": false,
+                    "page": "322"
+                }
+            ]
+        }
+    ]
+}
