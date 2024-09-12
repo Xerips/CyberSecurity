@@ -14,6 +14,7 @@ So! I've created this little app to help me quickly add useful commands to a fil
 **ChangeNotes:**
 
 2024-08-19: Fixed functionality to read and write all files from/to the same directory that remember-app is located.
+2024-09-12: Condensed writing to .txt files (no more spacing between descriptions), added coloring to '## Descriptions' for readability.
 
 ## remember_this.py
 
